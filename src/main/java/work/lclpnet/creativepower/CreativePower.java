@@ -1,11 +1,11 @@
-package org.example.modid;
+package work.lclpnet.creativepower;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
-public class ExampleMod implements ModInitializer {
+public class CreativePower implements ModInitializer {
 
-    public static final String MOD_ID = "modid";
+    public static final String MOD_ID = "crepow";
 
     @Override
     public void onInitialize() {

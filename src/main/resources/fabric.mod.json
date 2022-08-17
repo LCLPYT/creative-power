@@ -1,38 +1,38 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "crepow",
   "version": "${version}",
 
-  "name": "Example mod",
-  "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr...",
+  "name": "Creative Power",
+  "description": "Fabric Client mod for boosting a builders efficiency.",
   "authors": [
     "LCLP"
   ],
   "contact": {
-    "homepage": "https://github.com/LCLPYT/fabric-mod-boilerplate",
-    "sources": "https://github.com/LCLPYT/fabric-mod-boilerplate"
+    "homepage": "https://github.com/LCLPYT/creative-power",
+    "sources": "https://github.com/LCLPYT/creative-power"
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/crepow/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "org.example.modid.ExampleMod"
+      "work.lclpnet.creativepower.CreativePower"
     ],
     "client": [
-      "org.example.modid.client.ExampleModClient"
+      "work.lclpnet.creativepower.client.CreativePowerClient"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "crepow.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": "1.18.2",
     "java": ">=17"
   },
   "suggests": {}
