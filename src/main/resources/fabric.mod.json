@@ -23,6 +23,9 @@
     ],
     "client": [
       "work.lclpnet.creativepower.client.CreativePowerClient"
+    ],
+    "modmenu": [
+      "work.lclpnet.creativepower.CreativePowerModMenu"
     ]
   },
   "mixins": [

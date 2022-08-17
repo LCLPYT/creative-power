@@ -1,9 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "work.lclpnet.creativepower.asm.mixin",
+  "package": "work.lclpnet.creativepower.mixin",
   "compatibilityLevel": "JAVA_17",
-  "client": [],
+  "client": [
+    "client.InfestedBlockMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
