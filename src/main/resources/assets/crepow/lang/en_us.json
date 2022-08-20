@@ -1,5 +1,9 @@
 {
   "crepow.config.title": "Creative Power Config",
   "crepow.config.inventory.title": "Inventory",
-  "crepow.config.inventory.infested": "Hide Infested Blocks from Creative Inventory"
+  "crepow.config.inventory.infested": "Hide Infested Blocks from Creative Inventory",
+
+  "keybind.crepow.overlay": "Open Overlay",
+
+  "gui.crepow.overlay": "Creative Power Overlay"
 }

@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class CreativePower implements ModInitializer {
 
-    public static final String MOD_ID = "crepow";
+    public static final String MOD_ID = "crepow", MOD_NAME = "Creative Power";
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override

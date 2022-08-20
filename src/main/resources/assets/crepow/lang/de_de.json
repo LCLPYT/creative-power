@@ -1,5 +1,9 @@
 {
   "crepow.config.title": "Creative Power Einstellungen",
   "crepow.config.inventory.title": "Inventar",
-  "crepow.config.inventory.infested": "Verstecke infizierte Blöcke aus dem Kreativinventar"
+  "crepow.config.inventory.infested": "Verstecke infizierte Blöcke aus dem Kreativinventar",
+
+  "keybind.crepow.overlay": "Overlay öffnen",
+
+  "gui.crepow.overlay": "Creative Power Overlay"
 }
