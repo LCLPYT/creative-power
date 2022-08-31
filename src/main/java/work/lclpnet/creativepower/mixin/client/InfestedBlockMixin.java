@@ -6,7 +6,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 import org.spongepowered.asm.mixin.Mixin;
-import work.lclpnet.creativepower.CreativePowerConfig;
+import work.lclpnet.creativepower.Config;
 
 @Mixin(InfestedBlock.class)
 public abstract class InfestedBlockMixin extends Block {
@@ -17,7 +17,7 @@ public abstract class InfestedBlockMixin extends Block {
 
     @Override
     public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        if (!CreativePowerConfig.hideInfestedBlocks())
+        if (!Config.hideInfestedBlocks())
             super.appendStacks(group, stacks);
     }
 }

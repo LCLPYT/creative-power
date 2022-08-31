@@ -17,16 +17,16 @@ public class CreativePowerModMenu implements ModMenuApi {
         final var builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(new TranslatableText("crepow.config.title"))
-                .setSavingRunnable(CreativePowerConfig::save);
+                .setSavingRunnable(Config::save);
 
         final var inv = builder.getOrCreateCategory(new TranslatableText("crepow.config.inventory.title"));
 
         inv.addEntry(builder.entryBuilder()
                 .startBooleanToggle(
                         new TranslatableText("crepow.config.inventory.infested"),
-                        CreativePowerConfig.hideInfestedBlocks()
+                        Config.hideInfestedBlocks()
                 ).setDefaultValue(true)
-                .setSaveConsumer(CreativePowerConfig::hideInfestedBlocks)
+                .setSaveConsumer(Config::hideInfestedBlocks)
                 .build());
 
         return builder.build();

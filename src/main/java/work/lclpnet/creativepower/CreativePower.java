@@ -12,7 +12,7 @@ public class CreativePower implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CreativePowerConfig.load().whenComplete((unused, throwable) -> {
+        Config.load().whenComplete((unused, throwable) -> {
            if (throwable != null) LOGGER.error("Could not load config", throwable);
            else LOGGER.info("Config loaded successfully.");
         });
