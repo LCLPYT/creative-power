@@ -21,6 +21,9 @@
     "main": [
       "work.lclpnet.creative.CreativePower"
     ],
+    "client": [
+      "work.lclpnet.creative.client.CreativePowerClient"
+    ],
     "modmenu": [
       "work.lclpnet.creative.CreativePowerModMenu"
     ]

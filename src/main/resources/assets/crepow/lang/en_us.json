@@ -3,5 +3,9 @@
   "crepow.config.inventory.title": "Inventory",
   "crepow.config.inventory.infested": "Hide Infested Blocks from Creative Inventory",
 
-  "keybind.crepow.instant_mine": "Toggle instant mining"
+  "key.crepow.instant_mine": "Toggle instant mining",
+  "category.crepow.title": "Creative Power",
+
+  "crepow.instant_mine.enabled": "Instant mining has been activated.",
+  "crepow.instant_mine.disabled": "Instant mining has been disabled."
 }

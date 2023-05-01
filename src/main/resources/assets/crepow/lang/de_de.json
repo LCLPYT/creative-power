@@ -3,5 +3,9 @@
   "crepow.config.inventory.title": "Inventar",
   "crepow.config.inventory.infested": "Verstecke infizierte Blöcke aus dem Kreativinventar",
 
-  "keybind.crepow.instant_mine": "Sofortiges Abbauen umschalten"
+  "key.crepow.instant_mine": "Sofortiges Abbauen umschalten",
+  "category.crepow.title": "Creative Power",
+
+  "crepow.instant_mine.enabled": "Sofortiges Abbauen aktiviert.",
+  "crepow.instant_mine.disabled": "Sofortiges Abbauen deaktiviert."
 }
