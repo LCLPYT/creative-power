@@ -3,11 +3,5 @@
   "crepow.config.inventory.title": "Inventar",
   "crepow.config.inventory.infested": "Verstecke infizierte Blöcke aus dem Kreativinventar",
 
-  "keybind.crepow.overlay": "Overlay öffnen",
-
-  "gui.crepow.overlay": "Creative Power Overlay",
-
-  "crepow.action.flood_fill": "Flood Fill Plane",
-
-  "error.no_block_in_hand": "Bitte halte einen Block in deiner Hand."
+  "keybind.crepow.instant_mine": "Sofortiges Abbauen umschalten"
 }
