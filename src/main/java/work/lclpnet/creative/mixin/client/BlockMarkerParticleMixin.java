@@ -31,6 +31,10 @@ public class BlockMarkerParticleMixin {
         if (!adjustSize) return;
 
         VoxelShape shape = state.getOutlineShape(world, BlockPos.ofFloored(x, y, z));
+        if (shape.isEmpty()) {
+            adjustSize = false;
+            return;
+        }
 
         Box box = shape.getBoundingBox();
         final double xLen = box.getXLength();
