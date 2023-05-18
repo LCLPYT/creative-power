@@ -48,9 +48,15 @@ dependencies {
 
     /* other Java dependencies */
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation 'org.json:json:20220924'
-    implementation "work.lclpnet:json-config4j:${project.json_config_version}"
-    include "work.lclpnet:json-config4j:${project.json_config_version}"
+
+    'org.json:json:20220924'.with {
+        implementation it
+        include it
+    }
+    "work.lclpnet:json-config4j:${project.json_config_version}".with {
+        implementation it
+        include it
+    }
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
