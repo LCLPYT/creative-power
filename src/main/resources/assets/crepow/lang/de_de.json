@@ -2,6 +2,8 @@
   "crepow.config.title": "Creative Power Einstellungen",
   "crepow.config.inventory.title": "Inventar",
   "crepow.config.inventory.infested": "Verstecke infizierte Blöcke aus dem Kreativinventar",
+  "crepow.config.render.structure_voids": "Konstruktionsleeren rendern",
+  "crepow.config.render.accurate_marker_blocks" : "Marker-Block-Partikel in richtiger Größe",
 
   "key.crepow.instant_mine": "Sofortiges Abbauen umschalten",
   "category.crepow.title": "Creative Power",

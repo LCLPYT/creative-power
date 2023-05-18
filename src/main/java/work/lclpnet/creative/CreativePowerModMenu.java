@@ -30,9 +30,25 @@ public class CreativePowerModMenu implements ModMenuApi {
         inv.addEntry(builder.entryBuilder()
                 .startBooleanToggle(
                         Text.translatable("crepow.config.inventory.infested"),
-                        config.hideInfestedBlocks()
+                        config.isHideInfestedBlocks()
                 ).setDefaultValue(true)
-                .setSaveConsumer(config::hideInfestedBlocks)
+                .setSaveConsumer(config::setHideInfestedBlocks)
+                .build());
+
+        inv.addEntry(builder.entryBuilder()
+                .startBooleanToggle(
+                        Text.translatable("crepow.config.render.structure_voids"),
+                        config.isShowStructureVoids()
+                ).setDefaultValue(true)
+                .setSaveConsumer(config::setShowStructureVoids)
+                .build());
+
+        inv.addEntry(builder.entryBuilder()
+                .startBooleanToggle(
+                        Text.translatable("crepow.config.render.accurate_marker_blocks"),
+                        config.isAccurateMarkerBlocks()
+                ).setDefaultValue(false)
+                .setSaveConsumer(config::setAccurateMarkerBlocks)
                 .build());
 
         return builder.build();

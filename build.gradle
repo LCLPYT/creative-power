@@ -38,8 +38,6 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-//    modImplementation "work.lclpnet.mods:mmocontent:${project.mmocontent_version}"
-
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
@@ -65,6 +63,10 @@ dependencies {
 
 test {
     useJUnitPlatform();
+}
+
+loom {
+    accessWidenerPath = file('src/main/resources/crepow.accesswidener')
 }
 
 processResources {

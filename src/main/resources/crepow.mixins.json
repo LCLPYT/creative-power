@@ -9,6 +9,8 @@
     "ItemGroupsMixin"
   ],
   "client": [
-    "client.ClientPlayerInteractionManagerMixin"
+    "client.BlockMarkerParticleMixin",
+    "client.ClientPlayerInteractionManagerMixin",
+    "client.ClientWorldMixin"
   ]
 }

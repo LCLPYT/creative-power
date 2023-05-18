@@ -8,6 +8,8 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
+import work.lclpnet.creative.client.block.BlockMarkerItems;
+import work.lclpnet.creative.config.ConfigChangedCallback;
 import work.lclpnet.creative.type.CreativeCooldownToggle;
 
 public class CreativePowerClient implements ClientModInitializer {
@@ -35,5 +37,7 @@ public class CreativePowerClient implements ClientModInitializer {
                 }
             }
         });
+
+        ConfigChangedCallback.EVENT.register(config -> BlockMarkerItems.updateBlockMarkerItems());
     }
 }

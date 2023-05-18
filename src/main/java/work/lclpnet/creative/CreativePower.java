@@ -25,7 +25,7 @@ public class CreativePower implements ModInitializer {
 
     @SuppressWarnings("UnstableApiUsage")
     private void modifyEntries(FabricItemGroupEntries entries) {
-        if (!ConfigManager.getInstance().getConfig().hideInfestedBlocks()) return;
+        if (!ConfigManager.getInstance().getConfig().isHideInfestedBlocks()) return;
 
         List<ItemStack> displayStacks = entries.getDisplayStacks();
         List<ItemStack> searchStacks = entries.getSearchTabStacks();

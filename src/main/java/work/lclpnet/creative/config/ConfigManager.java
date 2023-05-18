@@ -30,7 +30,10 @@ public class ConfigManager {
     }
 
     public void save() {
-        configHandler.writeConfig();
+        ConfigChangedCallback.EVENT.invoker().onUpdated(getConfig());
+
+        // write config asynchronously
+        new Thread(configHandler::writeConfig, "Config saver").start();
     }
 
     @Nonnull

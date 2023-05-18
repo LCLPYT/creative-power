@@ -2,6 +2,8 @@
   "crepow.config.title": "Creative Power Config",
   "crepow.config.inventory.title": "Inventory",
   "crepow.config.inventory.infested": "Hide Infested Blocks from Creative Inventory",
+  "crepow.config.render.structure_voids": "Render structure void blocks",
+  "crepow.config.render.accurate_marker_blocks" : "Render marker block particles in accurate sizes",
 
   "key.crepow.instant_mine": "Toggle instant mining",
   "category.crepow.title": "Creative Power",

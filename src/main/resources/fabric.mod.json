@@ -31,6 +31,7 @@
   "mixins": [
     "crepow.mixins.json"
   ],
+  "accessWidener": "crepow.accesswidener",
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
