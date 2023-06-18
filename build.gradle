@@ -1,17 +1,19 @@
+import work.lclpnet.build.task.GithubDeploymentTask
+
 plugins {
     id 'java'
     id 'maven-publish'
     id 'fabric-loom' version '1.2.7'
-    id 'gradle-build-utils' version '1.2.1'
+    id 'gradle-build-utils' version '1.5.3'
 }
 
-Properties props = loadProperties.call('publish.properties') as Properties
+Properties props = buildUtils.loadProperties('publish.properties')
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-version = gitVersion.call()
+version = buildUtils.gitVersion()
 group = project.maven_group
 
 repositories {
@@ -83,7 +85,6 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task if it is present
     withSourcesJar()
 }
 
@@ -93,7 +94,24 @@ jar {
     }
 }
 
-// configure the maven publication
+def env = System.getenv()
+
+tasks.register("github", GithubDeploymentTask) {
+    dependsOn tasks.remapJar
+
+    config {
+        token = env.get("GITHUB_TOKEN")
+        repository = env.get("GITHUB_REPOSITORY")
+    }
+
+    release {
+        title = "[$project.minecraft_version] Creative Power $project.version"
+        tag = buildUtils.latestTag()
+    }
+
+    assets.add(tasks.remapJar.archiveFile.get())
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -109,25 +127,5 @@ publishing {
         }
     }
 
-    repositories {
-        maven {
-            def env = System.getenv()
-            if (Arrays.stream("DEPLOY_URL", "DEPLOY_USER", "DEPLOY_PASSWORD").allMatch(env.&containsKey)) {
-                credentials {
-                    username env.get("DEPLOY_USER")
-                    password env.get("DEPLOY_PASSWORD")
-                }
-                url env.get("DEPLOY_URL")
-            }
-            else if (Arrays.stream("mavenHost", "mavenUser", "mavenPassword").allMatch(props.&containsKey)) {
-                credentials {
-                    username props.getProperty('mavenUser')
-                    password props.getProperty('mavenPassword')
-                }
-                url props.getProperty('mavenHost')
-            } else {
-                url "file:///${project.projectDir}/repo"
-            }
-        }
-    }
+    buildUtils.setupPublishRepository(repositories, props)
 }
