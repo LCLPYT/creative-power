@@ -2,8 +2,10 @@
   "crepow.config.title": "Creative Power Einstellungen",
   "crepow.config.inventory.title": "Inventar",
   "crepow.config.inventory.infested": "Verstecke infizierte Blöcke aus dem Kreativinventar",
+  "crepow.config.render.title": "Darstellung",
   "crepow.config.render.structure_voids": "Konstruktionsleeren rendern",
   "crepow.config.render.accurate_marker_blocks" : "Marker-Block-Partikel in richtiger Größe",
+  "crepow.config.server.title": "Server",
   "crepow.config.server.enforce_host_full_op": "Volles Host OP-Level erzwingen",
   "crepow.config.server.enforce_host_full_op.tooltip": "Stellt sicher, dass der Gastgeber in geteilten Spielen OP-Level 4 hat. Cheats müssen trotzdem erlaubt sein.",
 

@@ -3,6 +3,7 @@ package work.lclpnet.creative;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
+import me.shedaniel.clothconfig2.api.ConfigCategory;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import work.lclpnet.creative.config.Config;
@@ -25,7 +26,7 @@ public class CreativePowerModMenu implements ModMenuApi {
 
         Config config = configManager.getConfig();
 
-        final var inv = builder.getOrCreateCategory(Text.translatable("crepow.config.inventory.title"));
+        ConfigCategory inv = builder.getOrCreateCategory(Text.translatable("crepow.config.inventory.title"));
 
         inv.addEntry(builder.entryBuilder()
                 .startBooleanToggle(
@@ -35,7 +36,9 @@ public class CreativePowerModMenu implements ModMenuApi {
                 .setSaveConsumer(config::setHideInfestedBlocks)
                 .build());
 
-        inv.addEntry(builder.entryBuilder()
+        ConfigCategory render = builder.getOrCreateCategory(Text.translatable("crepow.config.render.title"));
+
+        render.addEntry(builder.entryBuilder()
                 .startBooleanToggle(
                         Text.translatable("crepow.config.render.structure_voids"),
                         config.isShowStructureVoids()
@@ -43,7 +46,7 @@ public class CreativePowerModMenu implements ModMenuApi {
                 .setSaveConsumer(config::setShowStructureVoids)
                 .build());
 
-        inv.addEntry(builder.entryBuilder()
+        render.addEntry(builder.entryBuilder()
                 .startBooleanToggle(
                         Text.translatable("crepow.config.render.accurate_marker_blocks"),
                         config.isAccurateMarkerBlocks()
@@ -51,7 +54,9 @@ public class CreativePowerModMenu implements ModMenuApi {
                 .setSaveConsumer(config::setAccurateMarkerBlocks)
                 .build());
 
-        inv.addEntry(builder.entryBuilder()
+        ConfigCategory server = builder.getOrCreateCategory(Text.translatable("crepow.config.server.title"));
+
+        server.addEntry(builder.entryBuilder()
                 .startBooleanToggle(
                         Text.translatable("crepow.config.server.enforce_host_full_op"),
                         config.isEnforceHostFullOp()

@@ -2,9 +2,11 @@
   "crepow.config.title": "Creative Power Config",
   "crepow.config.inventory.title": "Inventory",
   "crepow.config.inventory.infested": "Hide Infested Blocks from Creative Inventory",
+  "crepow.config.render.title": "Rendering",
   "crepow.config.render.structure_voids": "Render structure void blocks",
   "crepow.config.render.accurate_marker_blocks" : "Render marker block particles in accurate sizes",
-  "crepow.config.server.enforce_host_full_op": "Enforce host full OP",
+  "crepow.config.server.title": "Server",
+  "crepow.config.server.enforce_host_full_op": "Enforce host full operator level",
   "crepow.config.server.enforce_host_full_op.tooltip": "Ensures that the host player has OP level 4 on hosted games, if cheats are enabled",
 
   "key.crepow.instant_mine": "Toggle instant mining",

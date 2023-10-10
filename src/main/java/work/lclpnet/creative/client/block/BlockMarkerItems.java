@@ -1,47 +1,26 @@
 package work.lclpnet.creative.client.block;
 
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.MappingResolver;
-import net.minecraft.client.world.ClientWorld;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import work.lclpnet.creative.config.Config;
 import work.lclpnet.creative.config.ConfigManager;
+import work.lclpnet.creative.mixin.client.ClientWorldAccessor;
 
-import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
+@Environment(EnvType.CLIENT)
 public class BlockMarkerItems {
 
     public static void updateBlockMarkerItems() {
-        final MappingResolver mapper = FabricLoader.getInstance().getMappingResolver();
-        final Class<?> owner = ClientWorld.class;
+        Set<Item> old = ClientWorldAccessor.crepow$getBlockMarkerItems();
+        Set<Item> markerItems = new HashSet<>(old);
 
-        final String fieldName = mapper.mapFieldName(
-                "intermediary",
-                mapper.unmapClassName("intermediary", owner.getName()),
-                "field_35432",
-                "Ljava/util/Set;"
-        );
+        applyChanges(markerItems);
 
-        final Set<Item> markerItems = new HashSet<>();
-
-        try {
-            Field field = ClientWorld.class.getDeclaredField(fieldName);
-            field.setAccessible(true);
-
-            @SuppressWarnings("unchecked")
-            Set<Item> old = (Set<Item>) field.get(null);
-            markerItems.addAll(old);
-
-            applyChanges(markerItems);
-
-            // now set the value
-            field.set(null, markerItems);
-        } catch (ReflectiveOperationException e) {
-            throw new RuntimeException("Could not change BLOCK_MARKER_ITEMS", e);
-        }
+        ClientWorldAccessor.crepow$setBlockMarkerItems(markerItems);
     }
 
     private static void applyChanges(Set<Item> markerItems) {

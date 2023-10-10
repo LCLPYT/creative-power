@@ -11,6 +11,7 @@
   "client": [
     "client.BlockMarkerParticleMixin",
     "client.ClientPlayerInteractionManagerMixin",
+    "client.ClientWorldAccessor",
     "client.ClientWorldMixin",
     "client.MinecraftServerMixin"
   ]
