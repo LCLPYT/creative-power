@@ -47,8 +47,17 @@ public class CreativePowerModMenu implements ModMenuApi {
                 .startBooleanToggle(
                         Text.translatable("crepow.config.render.accurate_marker_blocks"),
                         config.isAccurateMarkerBlocks()
-                ).setDefaultValue(false)
+                ).setDefaultValue(true)
                 .setSaveConsumer(config::setAccurateMarkerBlocks)
+                .build());
+
+        inv.addEntry(builder.entryBuilder()
+                .startBooleanToggle(
+                        Text.translatable("crepow.config.server.enforce_host_full_op"),
+                        config.isEnforceHostFullOp()
+                ).setDefaultValue(false)
+                .setSaveConsumer(config::setEnforceHostFullOp)
+                .setTooltip(Text.translatable("crepow.config.server.enforce_host_full_op.tooltip"))
                 .build());
 
         return builder.build();

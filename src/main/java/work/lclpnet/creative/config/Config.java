@@ -10,6 +10,7 @@ public class Config implements JsonConfig {
     private boolean hideInfestedBlocks = true;
     private boolean showStructureVoids = true;
     private boolean accurateMarkerBlocks = true;
+    private boolean enforceHostFullOp = false;
 
     public Config() {}
 
@@ -33,6 +34,18 @@ public class Config implements JsonConfig {
                 accurateMarkerBlocks = render.getBoolean("accurate_marker_blocks");
             }
         }
+
+        if (json.has("server")) {
+            JSONObject server = json.getJSONObject("server");
+
+            if (server.has("integrated")) {
+                JSONObject integrated = server.getJSONObject("integrated");
+
+                if (integrated.has("enforce_host_full_op")) {
+                    enforceHostFullOp = integrated.getBoolean("enforce_host_full_op");
+                }
+            }
+        }
     }
 
     @Override
@@ -49,6 +62,15 @@ public class Config implements JsonConfig {
         render.put("accurate_marker_blocks", accurateMarkerBlocks);
 
         json.put("render", render);
+
+        JSONObject server = new JSONObject();
+
+        JSONObject integrated = new JSONObject();
+        integrated.put("enforce_host_full_op", enforceHostFullOp);
+
+        server.put("integrated", integrated);
+
+        json.put("server", server);
 
         return json;
     }
@@ -78,6 +100,14 @@ public class Config implements JsonConfig {
 
     public void setAccurateMarkerBlocks(boolean accurateMarkerBlocks) {
         this.accurateMarkerBlocks = accurateMarkerBlocks;
+    }
+
+    public boolean isEnforceHostFullOp() {
+        return enforceHostFullOp;
+    }
+
+    public void setEnforceHostFullOp(boolean enforceHostFullOp) {
+        this.enforceHostFullOp = enforceHostFullOp;
     }
 
     public static final JsonConfigFactory<Config> FACTORY = new JsonConfigFactory<>() {

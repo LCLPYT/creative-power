@@ -10,7 +10,7 @@ import work.lclpnet.creative.CreativePower;
 import javax.annotation.Nonnull;
 import java.nio.file.Path;
 
-public class ConfigManager {
+public class ConfigManager implements ConfigAccess {
 
     private final ConfigHandler<Config> configHandler;
 
@@ -37,6 +37,7 @@ public class ConfigManager {
     }
 
     @Nonnull
+    @Override
     public Config getConfig() {
         return configHandler.getConfig();
     }
