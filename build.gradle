@@ -67,10 +67,6 @@ test {
     useJUnitPlatform();
 }
 
-loom {
-    accessWidenerPath = file('src/main/resources/crepow.accesswidener')
-}
-
 processResources {
     inputs.property "version", project.version
     inputs.property "loader_version", project.loader_version

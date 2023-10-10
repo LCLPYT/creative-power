@@ -1,3 +1,0 @@
-accessWidener	v1	named
-
-mutable field net/minecraft/client/world/ClientWorld BLOCK_MARKER_ITEMS Ljava/util/Set;
