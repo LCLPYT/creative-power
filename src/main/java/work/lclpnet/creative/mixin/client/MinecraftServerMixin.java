@@ -3,8 +3,6 @@ package work.lclpnet.creative.mixin.client;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerManager;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,8 +12,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import work.lclpnet.creative.config.Config;
 import work.lclpnet.creative.config.ConfigManager;
-
-import java.util.UUID;
 
 @Mixin(MinecraftServer.class)
 public abstract class MinecraftServerMixin {

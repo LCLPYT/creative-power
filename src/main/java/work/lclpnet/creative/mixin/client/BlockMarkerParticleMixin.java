@@ -37,10 +37,10 @@ public class BlockMarkerParticleMixin {
         }
 
         Box box = shape.getBoundingBox();
-        final double xLen = box.getXLength();
+        final double xLen = box.getLengthX();
         final double eps = 1e-9;
 
-        if (Math.abs(xLen - box.getYLength()) < eps && Math.abs(xLen - box.getZLength()) < eps) {
+        if (Math.abs(xLen - box.getLengthY()) < eps && Math.abs(xLen - box.getLengthZ()) < eps) {
             // cubic box; adjust size to block hit-box
             size = (float) (0.5 * xLen);
         } else {

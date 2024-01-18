@@ -49,14 +49,8 @@ dependencies {
     /* other Java dependencies */
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
-    'org.json:json:20220924'.with {
-        implementation it
-        include it
-    }
-    "work.lclpnet:json-config4j:${project.json_config_version}".with {
-        implementation it
-        include it
-    }
+    include(implementation('org.json:json:20220924'))
+    include(implementation("work.lclpnet:json-config4j:${project.json_config_version}"))
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
