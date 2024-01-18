@@ -3,18 +3,18 @@ import work.lclpnet.build.task.GithubDeploymentTask
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'fabric-loom' version '1.2.7'
-    id 'gradle-build-utils' version '1.5.3'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
+    id 'gradle-build-utils' version '1.7.0'
 }
 
 Properties props = buildUtils.loadProperties('publish.properties')
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
 version = buildUtils.gitVersion()
 group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
 
 repositories {
     mavenCentral()
@@ -64,7 +64,7 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform();
+    useJUnitPlatform()
 }
 
 processResources {
@@ -77,11 +77,14 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release.convention(17)
+    it.options.release.set(17)
 }
 
 java {
     withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
@@ -113,8 +116,7 @@ publishing {
         mavenJava(MavenPublication) {
             artifactId = project.archives_base_name
 
-            artifact remapJar
-            artifact remapSourcesJar
+            from components.java
 
             pom {
                 name = 'Creative Power'
