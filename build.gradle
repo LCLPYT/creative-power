@@ -3,7 +3,7 @@ import work.lclpnet.build.task.GithubDeploymentTask
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'fabric-loom' version '1.5-SNAPSHOT'
+    id 'fabric-loom' version '1.6-SNAPSHOT'
     id 'gradle-build-utils' version '1.7.0'
 }
 
