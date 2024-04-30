@@ -34,7 +34,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": "1.20.5",
+    "minecraft": "~1.20.5",
     "java": ">=21",
     "cloth-config": ">=14.0.0"
   },
