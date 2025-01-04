@@ -34,9 +34,9 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": ">=1.21",
+    "minecraft": ">=1.21.4",
     "java": ">=21",
-    "cloth-config": ">=15.0.0"
+    "cloth-config": ">=17.0.0"
   },
   "suggests": {
     "accurateblockplacement": "*"
