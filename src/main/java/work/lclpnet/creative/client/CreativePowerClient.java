@@ -31,9 +31,9 @@ public class CreativePowerClient implements ClientModInitializer {
                         || !client.interactionManager.getCurrentGameMode().isCreative()) continue;
 
                 if (((CreativeCooldownToggle) client.interactionManager).crepow$toggleCreativeBreakCooldown()) {
-                    client.player.sendMessage(Text.translatable("crepow.instant_mine.enabled").formatted(Formatting.GREEN));
+                    client.player.sendMessage(Text.translatable("crepow.instant_mine.enabled").formatted(Formatting.GREEN), false);
                 } else {
-                    client.player.sendMessage(Text.translatable("crepow.instant_mine.disabled").formatted(Formatting.RED));
+                    client.player.sendMessage(Text.translatable("crepow.instant_mine.disabled").formatted(Formatting.RED), false);
                 }
             }
         });
