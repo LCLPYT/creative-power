@@ -3,14 +3,14 @@ import work.lclpnet.build.task.GithubDeploymentTask
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'fabric-loom' version "${loom_version}"
     id 'gradle-build-utils' version '1.7.0'
 }
 
 Properties props = buildUtils.loadProperties('publish.properties')
 
-version = buildUtils.gitVersion()
 group = project.maven_group
+version = "${project.mod_version}+${project.minecraft_version}"
 
 base {
     archivesName = project.archives_base_name
@@ -99,7 +99,7 @@ tasks.register("github", GithubDeploymentTask) {
 
     release {
         title = "[$project.minecraft_version] Creative Power $project.version"
-        tag = buildUtils.latestTag()
+        tag = project.version
     }
 
     assets.add(tasks.remapJar.archiveFile.get())
