@@ -7,13 +7,16 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
+import work.lclpnet.creative.CreativePower;
 import work.lclpnet.creative.client.block.BlockMarkerItems;
 import work.lclpnet.creative.config.ConfigChangedCallback;
 import work.lclpnet.creative.type.CreativeCooldownToggle;
 
 public class CreativePowerClient implements ClientModInitializer {
 
+    private static final KeyBinding.Category CATEGORY = KeyBinding.Category.create(Identifier.of(CreativePower.MOD_ID, "keys"));
     private static KeyBinding KEY_TOGGLE_INSTANT_MINE;
 
     @Override
@@ -22,7 +25,7 @@ public class CreativePowerClient implements ClientModInitializer {
                 "key.crepow.instant_mine",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_I,
-                "category.crepow.title"
+                CATEGORY
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {

@@ -1,9 +1,9 @@
 package work.lclpnet.creative.mixin.client;
 
-import com.mojang.authlib.GameProfile;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.PlayerConfigEntry;
 import net.minecraft.server.PlayerManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,7 +18,7 @@ public abstract class MinecraftServerMixin {
 
     @Shadow public abstract PlayerManager getPlayerManager();
 
-    @Shadow public abstract boolean isHost(GameProfile var1);
+    @Shadow public abstract boolean isHost(PlayerConfigEntry var1);
 
     @Environment(EnvType.CLIENT)
     @Inject(
@@ -26,7 +26,7 @@ public abstract class MinecraftServerMixin {
             at = @At("RETURN"),
             cancellable = true
     )
-    public void crepow$modifyPermissionLevel(GameProfile profile, CallbackInfoReturnable<Integer> cir) {
+    public void crepow$modifyPermissionLevel(PlayerConfigEntry profile, CallbackInfoReturnable<Integer> cir) {
         // this mixin should enforce op level 4 for the host of integrated servers
         // this is useful for example, if the host is using the essential mod to host a server
         // default behaviour is only overridden when the config option is true
