@@ -7,7 +7,7 @@ import net.minecraft.client.KeyMapping;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.lwjgl.glfw.GLFW;
 import work.lclpnet.creative.CreativePower;
 import work.lclpnet.creative.client.block.BlockMarkerItems;
@@ -16,7 +16,7 @@ import work.lclpnet.creative.type.CreativeCooldownToggle;
 
 public class CreativePowerClient implements ClientModInitializer {
 
-    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(ResourceLocation.fromNamespaceAndPath(CreativePower.MOD_ID, "keys"));
+    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(Identifier.fromNamespaceAndPath(CreativePower.MOD_ID, "keys"));
     private static KeyMapping KEY_TOGGLE_INSTANT_MINE;
 
     @Override
