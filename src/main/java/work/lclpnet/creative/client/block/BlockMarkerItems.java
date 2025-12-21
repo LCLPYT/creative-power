@@ -2,11 +2,11 @@ package work.lclpnet.creative.client.block;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import work.lclpnet.creative.config.Config;
 import work.lclpnet.creative.config.ConfigManager;
-import work.lclpnet.creative.mixin.client.ClientWorldAccessor;
+import work.lclpnet.creative.mixin.client.ClientLevelAccessor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,12 +15,12 @@ import java.util.Set;
 public class BlockMarkerItems {
 
     public static void updateBlockMarkerItems() {
-        Set<Item> old = ClientWorldAccessor.crepow$getBlockMarkerItems();
+        Set<Item> old = ClientLevelAccessor.crepow$getBlockMarkerItems();
         Set<Item> markerItems = new HashSet<>(old);
 
         applyChanges(markerItems);
 
-        ClientWorldAccessor.crepow$setBlockMarkerItems(markerItems);
+        ClientLevelAccessor.crepow$setBlockMarkerItems(markerItems);
     }
 
     private static void applyChanges(Set<Item> markerItems) {

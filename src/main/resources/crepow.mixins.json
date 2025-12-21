@@ -6,13 +6,13 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "ItemGroupsMixin"
+    "CreativeModeTabsMixin"
   ],
   "client": [
-    "client.BlockMarkerParticleMixin",
-    "client.ClientPlayerInteractionManagerMixin",
-    "client.ClientWorldAccessor",
-    "client.ClientWorldMixin",
+    "client.BlockMarkerMixin",
+    "client.MultiPlayerGameModeMixin",
+    "client.ClientLevelAccessor",
+    "client.ClientLevelMixin",
     "client.MinecraftServerMixin"
   ]
 }

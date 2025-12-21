@@ -1,11 +1,11 @@
 package work.lclpnet.creative.mixin.client;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.client.particle.BlockMarkerParticle;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.client.particle.BlockMarker;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import work.lclpnet.creative.config.ConfigManager;
 
-@Mixin(BlockMarkerParticle.class)
-public class BlockMarkerParticleMixin {
+@Mixin(BlockMarker.class)
+public class BlockMarkerMixin {
 
     @Unique
     private boolean adjustSize;
@@ -26,21 +26,21 @@ public class BlockMarkerParticleMixin {
             method = "<init>",
             at = @At("TAIL")
     )
-    public void crepow$onInit(ClientWorld world, double x, double y, double z, BlockState state, CallbackInfo ci) {
+    public void crepow$onInit(ClientLevel world, double x, double y, double z, BlockState state, CallbackInfo ci) {
         adjustSize = ConfigManager.getInstance().getConfig().isAccurateMarkerBlocks();
         if (!adjustSize) return;
 
-        VoxelShape shape = state.getOutlineShape(world, BlockPos.ofFloored(x, y, z));
+        VoxelShape shape = state.getShape(world, BlockPos.containing(x, y, z));
         if (shape.isEmpty()) {
             adjustSize = false;
             return;
         }
 
-        Box box = shape.getBoundingBox();
-        final double xLen = box.getLengthX();
+        AABB box = shape.bounds();
+        final double xLen = box.getXsize();
         final double eps = 1e-9;
 
-        if (Math.abs(xLen - box.getLengthY()) < eps && Math.abs(xLen - box.getLengthZ()) < eps) {
+        if (Math.abs(xLen - box.getYsize()) < eps && Math.abs(xLen - box.getZsize()) < eps) {
             // cubic box; adjust size to block hit-box
             size = (float) (0.5 * xLen);
         } else {
@@ -49,7 +49,7 @@ public class BlockMarkerParticleMixin {
     }
 
     @Inject(
-            method = "getSize",
+            method = "getQuadSize",
             at = @At("RETURN"),
             cancellable = true
     )

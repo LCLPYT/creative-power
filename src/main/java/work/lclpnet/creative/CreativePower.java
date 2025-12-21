@@ -3,10 +3,10 @@ package work.lclpnet.creative;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.InfestedBlock;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.level.block.InfestedBlock;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import work.lclpnet.creative.config.ConfigManager;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class CreativePower implements ModInitializer {
     public void onInitialize() {
         ConfigManager.getInstance().init();
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(this::modifyEntries);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(this::modifyEntries);
     }
 
     @SuppressWarnings("UnstableApiUsage")
