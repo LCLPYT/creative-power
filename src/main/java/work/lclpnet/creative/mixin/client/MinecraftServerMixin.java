@@ -26,7 +26,7 @@ public abstract class MinecraftServerMixin {
             at = @At("RETURN"),
             cancellable = true
     )
-    public void crepow$modifyPermissionLevel(NameAndId profile, CallbackInfoReturnable<Integer> cir) {
+    public void crepow$modifyPermissionLevel(NameAndId nameAndId, CallbackInfoReturnable<Integer> cir) {
         // this mixin should enforce op level 4 for the host of integrated servers
         // this is useful for example, if the host is using the essential mod to host a server
         // default behaviour is only overridden when the config option is true
@@ -34,10 +34,10 @@ public abstract class MinecraftServerMixin {
         if (!config.isEnforceHostFullOp()) return;
 
         PlayerList playerManager = this.getPlayerList();
-        if (!playerManager.isOp(profile)) return;
+        if (!playerManager.isOp(nameAndId)) return;
 
         // check if the profile belongs to the host
-        if (!isSingleplayerOwner(profile)) return;
+        if (!isSingleplayerOwner(nameAndId)) return;
 
         // this is the host profile, enforce op level 4
         cir.setReturnValue(4);

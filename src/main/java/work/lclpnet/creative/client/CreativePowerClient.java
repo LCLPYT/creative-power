@@ -2,7 +2,7 @@ package work.lclpnet.creative.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.network.chat.Component;
@@ -21,7 +21,7 @@ public class CreativePowerClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        KEY_TOGGLE_INSTANT_MINE = KeyBindingHelper.registerKeyBinding(new KeyMapping(
+        KEY_TOGGLE_INSTANT_MINE = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.crepow.instant_mine",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_I,
@@ -34,9 +34,9 @@ public class CreativePowerClient implements ClientModInitializer {
                         || !client.gameMode.getPlayerMode().isCreative()) continue;
 
                 if (((CreativeCooldownToggle) client.gameMode).crepow$toggleCreativeBreakCooldown()) {
-                    client.player.displayClientMessage(Component.translatable("crepow.instant_mine.enabled").withStyle(ChatFormatting.GREEN), false);
+                    client.player.sendSystemMessage(Component.translatable("crepow.instant_mine.enabled").withStyle(ChatFormatting.GREEN));
                 } else {
-                    client.player.displayClientMessage(Component.translatable("crepow.instant_mine.disabled").withStyle(ChatFormatting.RED), false);
+                    client.player.sendSystemMessage(Component.translatable("crepow.instant_mine.disabled").withStyle(ChatFormatting.RED));
                 }
             }
         });

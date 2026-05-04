@@ -26,11 +26,11 @@ public class BlockMarkerMixin {
             method = "<init>",
             at = @At("TAIL")
     )
-    public void crepow$onInit(ClientLevel world, double x, double y, double z, BlockState state, CallbackInfo ci) {
+    public void crepow$onInit(ClientLevel level, double x, double y, double z, BlockState state, CallbackInfo ci) {
         adjustSize = ConfigManager.getInstance().getConfig().isAccurateMarkerBlocks();
         if (!adjustSize) return;
 
-        VoxelShape shape = state.getShape(world, BlockPos.containing(x, y, z));
+        VoxelShape shape = state.getShape(level, BlockPos.containing(x, y, z));
         if (shape.isEmpty()) {
             adjustSize = false;
             return;
@@ -53,7 +53,7 @@ public class BlockMarkerMixin {
             at = @At("RETURN"),
             cancellable = true
     )
-    public void crepow$manipulateSize(float tickDelta, CallbackInfoReturnable<Float> cir) {
+    public void crepow$manipulateSize(float a, CallbackInfoReturnable<Float> cir) {
         if (adjustSize) {
             cir.setReturnValue(size);
         }

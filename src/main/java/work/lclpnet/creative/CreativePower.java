@@ -1,8 +1,8 @@
 package work.lclpnet.creative;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTabOutput;
 import net.minecraft.world.level.block.InfestedBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -20,11 +20,10 @@ public class CreativePower implements ModInitializer {
     public void onInitialize() {
         ConfigManager.getInstance().init();
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(this::modifyEntries);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(this::modifyEntries);
     }
 
-    @SuppressWarnings("UnstableApiUsage")
-    private void modifyEntries(FabricItemGroupEntries entries) {
+    private void modifyEntries(FabricCreativeModeTabOutput entries) {
         if (!ConfigManager.getInstance().getConfig().isHideInfestedBlocks()) return;
 
         List<ItemStack> displayStacks = entries.getDisplayStacks();

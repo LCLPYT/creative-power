@@ -19,19 +19,19 @@ public class CreativeModeTabsMixin {
     private static CreativeModeTab.@Nullable ItemDisplayParameters CACHED_PARAMETERS;
 
     @Shadow
-    private static void buildAllTabContents(CreativeModeTab.ItemDisplayParameters displayContext) {}
+    private static void buildAllTabContents(CreativeModeTab.ItemDisplayParameters parameters) {}
 
     @Inject(
             method = "tryRebuildTabContents",
             at = @At("HEAD"),
             cancellable = true
     )
-    private static void crepow$beforeUpdateDisplayContext(FeatureFlagSet enabledFeatures, boolean operatorEnabled,
+    private static void crepow$beforeUpdateDisplayContext(FeatureFlagSet enabledFeatures, boolean hasPermissions,
                                                           HolderLookup.Provider lookup, CallbackInfoReturnable<Boolean> cir) {
         if (!ItemGroupUpdater.isDirty()) return;
         ItemGroupUpdater.setDirty(false);
 
-        CACHED_PARAMETERS = new CreativeModeTab.ItemDisplayParameters(enabledFeatures, operatorEnabled, lookup);
+        CACHED_PARAMETERS = new CreativeModeTab.ItemDisplayParameters(enabledFeatures, hasPermissions, lookup);
         buildAllTabContents(CACHED_PARAMETERS);
         cir.setReturnValue(true);
     }
