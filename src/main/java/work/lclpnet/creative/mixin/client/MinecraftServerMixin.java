@@ -3,6 +3,7 @@ package work.lclpnet.creative.mixin.client;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.permissions.LevelBasedPermissionSet;
 import net.minecraft.server.players.NameAndId;
 import net.minecraft.server.players.PlayerList;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,7 +27,7 @@ public abstract class MinecraftServerMixin {
             at = @At("RETURN"),
             cancellable = true
     )
-    public void crepow$modifyPermissionLevel(NameAndId nameAndId, CallbackInfoReturnable<Integer> cir) {
+    public void crepow$modifyPermissionLevel(NameAndId nameAndId, CallbackInfoReturnable<LevelBasedPermissionSet> cir) {
         // this mixin should enforce op level 4 for the host of integrated servers
         // this is useful for example, if the host is using the essential mod to host a server
         // default behaviour is only overridden when the config option is true
@@ -40,6 +41,6 @@ public abstract class MinecraftServerMixin {
         if (!isSingleplayerOwner(nameAndId)) return;
 
         // this is the host profile, enforce op level 4
-        cir.setReturnValue(4);
+        cir.setReturnValue(LevelBasedPermissionSet.OWNER);
     }
 }
