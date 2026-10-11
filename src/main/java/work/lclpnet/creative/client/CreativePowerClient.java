@@ -8,7 +8,6 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
 import net.minecraft.resources.Identifier;
-import org.lwjgl.glfw.GLFW;
 import work.lclpnet.creative.CreativePower;
 import work.lclpnet.creative.client.block.BlockMarkerItems;
 import work.lclpnet.creative.config.ConfigChangedCallback;
@@ -23,8 +22,8 @@ public class CreativePowerClient implements ClientModInitializer {
     public void onInitializeClient() {
         KEY_TOGGLE_INSTANT_MINE = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.crepow.instant_mine",
-                InputConstants.Type.KEYSYM,
-                GLFW.GLFW_KEY_I,
+                InputConstants.Type.KEYBOARD,
+                InputConstants.KEY_I,
                 CATEGORY
         ));
 
